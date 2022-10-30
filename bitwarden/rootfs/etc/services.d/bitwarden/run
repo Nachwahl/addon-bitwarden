@@ -75,6 +75,7 @@ fi
 if bashio::config.has_value 'domain'; then
     domain=$(bashio::config 'domain')
     export DOMAIN="{json=${domain}}"
+    bashio::log.info "${domain}"
 fi
 
 # Always enable Websockets
