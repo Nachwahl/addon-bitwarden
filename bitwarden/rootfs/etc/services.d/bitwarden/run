@@ -71,6 +71,12 @@ if bashio::config.has_value 'request_size_limit'; then
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
 
+# Set domain for WebAuthn to work with external proxies
+if bashio::config.has_value 'domain'; then
+    domain=$(bashio::config 'domain')
+    export DOMAIN="{json=${domain}}"
+fi
+
 # Always enable Websockets
 export WEBSOCKET_ENABLED=true
 export WEBSOCKET_PORT=8080
